@@ -1,53 +1,26 @@
-  c l o u d p i c k l e = = 3 . 1 . 2 
- 
- c o n t o u r p y = = 1 . 4 . 0 
- 
- c y c l e r = = 0 . 1 2 . 1 
- 
- f o n t t o o l s = = 4 . 6 6 . 1 
- 
- j o b l i b = = 1 . 6 . 0 
- 
- k i w i s o l v e r = = 1 . 5 . 1 
- 
- m a t p l o t l i b = = 3 . 1 1 . 2 
- 
- n a r w h a l s = = 2 . 2 7 . 1 
- 
- n u m p y = = 2 . 5 . 4 
- 
- p a c k a g i n g = = 2 6 . 3 
- 
- p a n d a s = = 3 . 0 . 6 
- 
- p i l l o w = = 1 2 . 3 . 0 
- 
- p y f l a k e s = = 4 . 0 . 3 
- 
- p y p a r s i n g = = 3 . 3 . 3 
- 
- P y S i d e 6 = = 6 . 1 2 . 0 
- 
- P y S i d e 6 _ A d d o n s = = 6 . 1 2 . 0 
- 
- P y S i d e 6 _ E s s e n t i a l s = = 6 . 1 2 . 0 
- 
- P y S i d e 6 _ P d f = = 6 . 1 2 . 0 . 1 4 0 
- 
- P y S i d e 6 _ W e b E n g i n e = = 6 . 1 2 . 0 . 1 4 0 
- 
- p y t h o n - d a t e u t i l = = 2 . 9 . 0 . p o s t 0 
- 
- s c i k i t - l e a r n = = 1 . 9 . 1 
- 
- s c i p y = = 1 . 1 8 . 1 
- 
- s h i b o k e n 6 = = 6 . 1 2 . 0 
- 
- s i x = = 1 . 1 7 . 0 
- 
- t h r e a d p o o l c t l = = 3 . 7 . 0 
- 
- t z d a t a = = 2 0 2 6 . 5 
- 
- 
+cloudpickle==3.1.2
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.66.1
+joblib==1.6.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+narwhals==2.27.1
+numpy==2.5.4
+packaging==26.3
+pandas==3.0.6
+pillow==12.3.0
+pyflakes==4.0.3
+pyparsing==3.3.3
+PySide6==6.12.0
+PySide6_Addons==6.12.0
+PySide6_Essentials==6.12.0
+PySide6_Pdf==6.12.0.140
+PySide6_WebEngine==6.12.0.140
+python-dateutil==2.9.0.post0
+scikit-learn==1.9.1
+scipy==1.18.1
+shiboken6==6.12.0
+six==1.17.0
+threadpoolctl==3.7.0
+tzdata==2026.5
