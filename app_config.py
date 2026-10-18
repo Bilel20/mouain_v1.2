@@ -1,16 +1,35 @@
 # -*- coding: utf-8 -*-
 """Extracted module app_config."""
 from pathlib import Path
+import sys
 
 from PySide6.QtCore import QTranslator
 from PySide6.QtGui import QFontDatabase
 
 BASE_DIR = Path(__file__).resolve().parent
 APP_DIR = Path(__file__).resolve().parent
-DB_PATH = APP_DIR / "school_data.db"
+#DB_PATH = APP_DIR / "school_data.db"
 ICON_PATH = BASE_DIR / "icons" / "icon.ico"
 FONTS_DIR = BASE_DIR / "fonts"
 TEMPLATE_PATH = BASE_DIR / "template.odt"
+
+import os
+sys
+
+def get_db_path():
+    """الحصول على مسار دائم لقاعدة البيانات بجانب ملف الـ exe"""
+    if getattr(sys, 'frozen', False):
+        # إذا كان التطبيق محولاً إلى ملف .exe
+        # اجعل المسار دائماً في نفس مجلد وجود ملف الـ .exe الذي يفتحه المستخدم
+        base_dir = os.path.dirname(sys.executable)
+    else:
+        # أثناء التطوير المحلي (Venv)
+        base_dir = os.path.abspath(".")
+        
+    return os.path.join(base_dir, "school_data.db")
+
+# استعمل هذا المتغير عند الاتصال بقاعدة البيانات:
+DB_PATH = get_db_path()
 
 SCHOOL_INFO_COLUMNS = (
     "nom_annee",
