@@ -28,8 +28,8 @@ jobs:
 
     - name: Build with PyInstaller
       run: |
-        pyinstaller --noconsole --onefile --paths=. --add-data "fonts;fonts" --add-data "icons;icons" --add-data "style_1.qss;." --add-data "school_data.db;." --name="mouain_app_v1-2" main.py
-
+        pyinstaller --noconsole --onefile --paths=. --add-data "fonts;fonts" --add-data "icons;icons" --add-data "style_1.qss;." --name="mouain_app_v1-2" main.py
+    
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
