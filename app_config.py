@@ -14,7 +14,6 @@ FONTS_DIR = BASE_DIR / "fonts"
 TEMPLATE_PATH = BASE_DIR / "template.odt"
 
 import os
-sys
 
 def get_db_path():
     """الحصول على مسار دائم لقاعدة البيانات بجانب ملف الـ exe"""
