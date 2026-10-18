@@ -329,6 +329,20 @@ class LessonEntryDialog(QDialog):
 
 
 class BulkLessonEntryDialog(QDialog):
+    @staticmethod
+    def _duration_from_interval(hour_text):
+        cleaned_text = str(hour_text or "").replace(" ", "").replace("ـ", "-")
+        parts = cleaned_text.split("-")
+        if len(parts) != 2:
+            return None
+        try:
+            start = datetime.strptime(parts[0], "%H:%M")
+            end = datetime.strptime(parts[1], "%H:%M")
+        except ValueError:
+            return None
+        duration = int((end - start).total_seconds() // 60)
+        return duration if duration > 0 else None
+
     def __init__(self, lessons, number_defaults, parent=None):
         super().__init__(parent)
         self.setWindowTitle("إضافة كل الحصص")
@@ -344,7 +358,12 @@ class BulkLessonEntryDialog(QDialog):
             except ValueError:
                 return 1, time.max, hour_text
 
-        self.lessons = sorted(lessons, key=lesson_sort_key)
+        self.lessons = []
+        for lesson in sorted(lessons, key=lesson_sort_key):
+            duration = self._duration_from_interval(lesson[2])
+            if duration is not None:
+                lesson = (*lesson[:3], f"{duration} دقيقة")
+            self.lessons.append(lesson)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(24, 22, 24, 20)
         layout.setSpacing(16)
