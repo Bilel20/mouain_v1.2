@@ -878,7 +878,7 @@ class DayLessonsBrowsePage(QWidget):
                     for key_name, value_text in details:
                         QTreeWidgetItem(
                             activity_item,
-                            [f"العنصر: {key_name or '—'}    |    {value_text or '—'}"]
+                            [f"{key_name or '—'}    |    {value_text or '—'}"]
                         )
 
                 if not activities:
