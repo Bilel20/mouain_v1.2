@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """Extracted module widgets."""
 import math
-import sqlite3
 from datetime import datetime
 from pathlib import Path
 
@@ -21,6 +20,7 @@ from PySide6.QtWidgets import (
 )
 
 from app_config import load_custom_font, set_dialog_button_action_types
+from secure_database import sqlite3
 
 
 def _wrapped_text_height(text, width, font, padding=8):
@@ -987,25 +987,29 @@ class DayLessonsBrowsePage(QWidget):
                 "جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان",
                 "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
             )
-            date_line = (
-                "يوم" + "&nbsp;" * 40
-                + html.escape(weekdays[date_value.weekday()]) + "&nbsp;" * 40
-                + f" {date_value.day:02d}" + "&nbsp;" * 40
-                + html.escape(months[date_value.month - 1]) + "&nbsp;" * 40
-                + str(date_value.year)
-            )
-            html_lines = [
-                "<html><head><meta charset='utf-8'></head>",
-                "<body dir='rtl' style='direction: rtl;'>",
-                f"<div style='font-family: \"{font_family}\"; font-size: 8pt;'>",
-                "<table dir='rtl' width='100%' cellspacing='0' cellpadding='7' "
-                "style='background-color: #DBEAFE;  "
-                "margin-bottom: 5px;'>"
-                f"<tr><td align='center' bgcolor='#DBEAFE' "
-                f"style='background-color: #DBEAFE;  "
-                f"white-space: nowrap;'>{date_line}</td></tr>"
-                "</table>",
+            date_list = [
+                "يوم",
+                weekdays[date_value.weekday()],
+                date_value.day,
+                months[date_value.month - 1],
+                str(date_value.year),
             ]
+            html_lines = [
+                            "<html><head><meta charset='utf-8'></head>",
+                            "<body dir='rtl' style='direction: rtl;'>",
+                            f"<div style='font-family: \"{font_family}\"; font-size: 8pt;'>",
+                            "<table dir='rtl' width='100%' cellspacing='5' cellpadding='1' "
+                            "style='background-color: #DBEAFE;  "
+                            "margin-bottom: 5px;'>"
+                            f"<tr>"
+                            f"<td align='center' bgcolor='#DBEAFE' style='background-color: #DBEAFE;'>{date_list[4]}</td>"
+                            f"<td align='center' bgcolor='#DBEAFE' style='background-color: #DBEAFE;'> {date_list[3]}</td>"
+                            f"<td align='center' bgcolor='#DBEAFE' style='background-color: #DBEAFE;'> {date_list[2]}</td>"
+                            f"<td align='center' bgcolor='#DBEAFE' style='background-color: #DBEAFE;'> {date_list[1]}</td>"
+                            f"<td align='center' bgcolor='#DBEAFE' style='background-color: #DBEAFE;'> {date_list[0]}</td>"
+                            f"</tr>"
+                            "</table>",
+                        ]
 
             for lesson_index in range(self.tree.topLevelItemCount()):
                 lesson = self.tree.topLevelItem(lesson_index)
@@ -1023,10 +1027,9 @@ class DayLessonsBrowsePage(QWidget):
                 for activity_index in range(lesson.childCount()):
                     activity = lesson.child(activity_index)
                     activity_text = activity.text(0)
-                    # إضافة علامة RLM لضبط الاتجاه البصري للنقاط والرموز العربية
-                    fixed_activity_text = f"{activity_text}"
+                    fixed_activity_text = f"📖 {activity_text} 📖"
                     html_lines.append(
-                                                "<p dir='rtl' style='background-color: #FF88f5; "
+                                                "<p dir='rtl' style='background-color: #Fafafa; "
                                                 "border: 1px solid #E2E8F0; border-radius: 6px; "
                                                 "box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06); "
                                                 "color: #010101; margin: 2px 10px; padding: 3px 8px; "
