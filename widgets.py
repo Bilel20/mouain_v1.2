@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (
 )
 
 from app_config import load_custom_font, set_dialog_button_action_types
-from secure_database import sqlite3
+import sqlite3
 
 
 def _wrapped_text_height(text, width, font, padding=8):
